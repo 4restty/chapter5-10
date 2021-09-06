@@ -1,0 +1,16 @@
+<%= render "shared/user_info", user: @user %>
+<%= render "shared/new_book", book: @new_book %>
+<div>
+  <h2>Book detail</h2>
+  <table class="table">
+    <tbody>
+      <tr>
+        <% if @user.profile_image_id.present? %>
+          <%= attachment_image_tag @user, :profile_image %>
+        <% else %>
+          <%= image_tag "no_image.png", size: "50x50" %>
+        <% end %>
+      </tr>
+    </tbody>
+  </table>
+</div>
