@@ -6,11 +6,7 @@
     <tbody>
       <tr>
         <td>
-          <% if @user.profile_image_id.present? %>
-            <%= attachment_image_tag @user, :profile_image, size: "50x50" %>
-          <% else %>
-            <%= image_tag "no_image.png", size: "50x50" %>
-          <% end %>
+          <%= attachment_image_tag @user, :profile_image, size: "50x50", fallback: "no_image.png" %>
           <br>
           <%= link_to @user.name, user_path(current_user.id) %>
         </td>
