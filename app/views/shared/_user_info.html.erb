@@ -3,11 +3,7 @@
   <table class="table">
     <tbody>
       <tr>
-        <% if user.profile_image_id.present? %>
-          <%= attachment_image_tag user, :profile_image %>
-        <% else %>
-          <%= image_tag "no_image.png", size: "100x100" %>
-        <% end %>
+        <%= attachment_image_tag user, :profile_image, size: "100x100", fallback: "no_image.png" %>
       </tr>
       <tr>
         <th>name</th>
