@@ -1,30 +1,36 @@
-<%= render "shared/user_info", user: @user %>
-<%= render "shared/new_book", book: @new_book %>
-<div>
-  <h2>Book detail</h2>
-  <table class="table">
-    <tbody>
-      <tr>
-        <td>
-          <%= attachment_image_tag @user, :profile_image, size: "50x50", fallback: "no_image.png" %>
-          <br>
-          <%= link_to @user.name, user_path(@user.id) %>
-        </td>
-        <td>
-          <%= link_to @book.title, book_path(@book) %>
-        </td>
-        <td>
-          <%= @book.body %>
-        </td>
-        <% if @user.id == current_user.id %>
-          <td>
-            <%= link_to "Edit", edit_book_path(@book) %>
-          </td>
-          <td>
-            <%= link_to "Delete", book_path(@book), method: :delete %>
-          </td>
-        <% end %>
-      </tr>
-    </tbody>
-  </table>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render "shared/user_info", user: @user %>
+      <%= render "shared/new_book", book: @new_book %>
+    </div>
+    <div class="col-md-8 offset-md-1">
+      <h2>Book detail</h2>
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>
+              <%= attachment_image_tag @user, :profile_image, size: "50x50", fallback: "no_image.png" %>
+              <br>
+              <%= link_to @user.name, user_path(@user.id) %>
+            </td>
+            <td>
+              <%= link_to @book.title, book_path(@book) %>
+            </td>
+            <td>
+              <%= @book.body %>
+            </td>
+            <% if @user.id == current_user.id %>
+              <td>
+                <%= link_to "Edit", edit_book_path(@book), class: "btn btn-sm btn-success" %>
+              </td>
+              <td>
+                <%= link_to "Destroy", book_path(@book), method: :delete, class: "btn btn-sm btn-danger" %>
+              </td>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>

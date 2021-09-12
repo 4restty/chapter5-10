@@ -1,3 +1,23 @@
-<%= render "shared/user_info", user: @user %>
-<%= render "shared/new_book", book: @new_book %>
-<%= render "shared/books", books: @books %>
+<div id="error_explanation">
+  <% if @book&.errors&.any? %>
+    <h3><%= @book.errors.count %> errors prohibited this obj from being saved:</h3>
+    <ul>
+      <li>
+        <% @book.errors.full_messages.each do |msg| %>
+          <%= msg %>
+        <% end %>
+      </li>
+    </ul>
+  <% end %>
+</div>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render "shared/user_info", user: @user %>
+      <%= render "shared/new_book", book: @new_book %>
+    </div>
+    <div class="col-md-8 offset-md-1">
+      <%= render "shared/books", books: @books %>
+    </div>
+  </div>
+</div>

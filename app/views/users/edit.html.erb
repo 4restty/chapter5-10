@@ -1,5 +1,17 @@
 <div>
   <h2>User info</h2>
+  <div id="error_explanation">
+    <% if @user.errors.any? %>
+      <h3><%= @user.errors.count %> errors prohibited this obj from being saved:</h3>
+      <ul>
+        <li>
+          <% @user.errors.full_messages.each do |msg| %>
+            <%= msg %>
+          <% end %>
+        </li>
+      </ul>
+    <% end %>
+  </div>
   <%= form_with model: @user, local:true do |f| %>
     <div>
       <%= f.label "Name" %><br>
